@@ -19,9 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -42,46 +44,61 @@ fun quoteListItem(quote: Quote,onClick: (quote: Quote)->Unit)
                 onClick(quote)
 //when this function is called it will pass the current quote to parent
             }
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        
     ) {
-        Row(
-            Modifier.padding(10.dp),
+        Box (
+            modifier = Modifier.fillMaxWidth()
+                .background(
+                    Brush.linearGradient(
+                        colors = listOf(
+                            colorResource(id = R.color.pink),
+                            colorResource(id = R.color.purple)
+                        )
+                    )
+                )
         ){
-            Image(
-                painter = painterResource(id = R.drawable.baseline_format_quote_24),
-                contentDescription = "",
-                colorFilter = ColorFilter.tint(Color.White),
-                alignment = Alignment.TopStart,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .padding(4.dp)
-                    .size(40.dp)
-                    .background(color = Color.Black)
-                    .rotate(180f)
-            )
-            Spacer(modifier = Modifier.padding(4.dp))
-            Column(
-                modifier = Modifier.weight(1f)
-                //now col will take all the remaining portion
+            Row(
+                Modifier.padding(10.dp),
             ) {
-                Text(
-                    text = quote.quote,
-                    color = Color.Black,
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(0.dp,0.dp,0.dp,8.dp)
+                Image(
+                    painter = painterResource(id = R.drawable.baseline_format_quote_24),
+                    contentDescription = "",
+                    colorFilter = ColorFilter.tint(Color.White),
+                    alignment = Alignment.TopStart,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .padding(4.dp)
+                        .size(40.dp)
+                        .background(color = Color.Black)
+                        .rotate(180f)
                 )
-                Box(modifier = Modifier
-                    .background(Color.Gray)
-                    .fillMaxWidth(.4f)
-                    .height(1.dp)
-                )
-                Text(
-                    text = quote.author,
-                    style = MaterialTheme.typography.titleSmall,
-                    fontSize = 20.sp,
-                    textAlign = TextAlign.End,
-                )
+                Spacer(modifier = Modifier.padding(4.dp))
+                Column(
+                    modifier = Modifier.weight(1f)
+                    //now col will take all the remaining portion
+                ) {
+                    Text(
+                        text = quote.quote,
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 8.dp)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .background(Color.Gray)
+                            .fillMaxWidth(.4f)
+                            .height(1.dp)
+                    )
+                    Text(
+                        text = quote.author,
+                        style = MaterialTheme.typography.titleSmall,
+                        fontSize = 20.sp,
+                        color = Color.Gray,
+                        textAlign = TextAlign.End,
+                    )
 
+                }
             }
         }
     }
