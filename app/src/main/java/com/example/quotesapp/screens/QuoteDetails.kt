@@ -97,7 +97,7 @@ fun quoteDetail(quote: Quote) {
                         text = quote.author,
                         style = MaterialTheme.typography.titleSmall,
                         fontSize = 20.sp,
-                        color = Color.Gray,
+                        color = Color.LightGray,
                         fontFamily = FontFamily.Serif,
                         textAlign = TextAlign.End,
                     )

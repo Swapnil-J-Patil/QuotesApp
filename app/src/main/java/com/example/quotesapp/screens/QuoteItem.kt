@@ -86,7 +86,7 @@ fun quoteListItem(quote: Quote,onClick: (quote: Quote)->Unit)
                     )
                     Box(
                         modifier = Modifier
-                            .background(Color.Gray)
+                            .background(Color.LightGray)
                             .fillMaxWidth(.4f)
                             .height(1.dp)
                     )
@@ -94,7 +94,7 @@ fun quoteListItem(quote: Quote,onClick: (quote: Quote)->Unit)
                         text = quote.author,
                         style = MaterialTheme.typography.titleSmall,
                         fontSize = 20.sp,
-                        color = Color.Gray,
+                        color = Color.LightGray,
                         textAlign = TextAlign.End,
                     )
 
